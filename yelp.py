@@ -3,11 +3,14 @@ import urllib
 import urllib2
 import oauth2
 
-SEARCH_LIMIT = 5
+RADIUS= 1000
 CONSUMER_KEY = "nN_1rvj62gHje5i84nru4w"
 CONSUMER_SECRET = "QgA2n5nULXrSDX_F2H5Hh_qRmUg"
 TOKEN = "ucuSoWsDWPZFGzJzOR13g5GT53tUTR9g"
 TOKEN_SECRET = "k399NqU0z3aelLkdhvM-8BEHyXQ"
+
+def setRadius(limit):
+    RADIUS = limit
 
 def request( url_params):
     url = "https://api.yelp.com/v2/search/"
@@ -30,24 +33,40 @@ def search(term, location):
     url_params = {
         'term': term.replace(' ', '+'),
         'location': location.replace(' ', '+'),
-        'limit': SEARCH_LIMIT
+        'radius_filter': RADIUS
     }
     return request( url_params)
 
 def getRestaurants(term, location):
     restaurants = {}
-    businesses = search(term, location)["businesses"]
-    for places in businesses:
-        fulladdress = str(places["location"]["display_address"][0]) + " "+ str(places["location"]["display_address"][2])
-        restaurants[str(places["name"])] = [fulladdress, places["rating"]]
+    try:
+        businesses = search(term, location)["businesses"]
+        for places in businesses:
+            if (len(places["location"]["display_address"]) > 1):
+                fulladdress = str(places["location"]["display_address"][0]) + " "
+                if (len(places["location"]["display_address"])== 3):
+                    fulladdress += str(places["location"]["display_address"][2])
+                else:
+                    fulladdress += str(places["location"]["display_address"][1])
+                restaurants[str(places["name"])] = [fulladdress, places["rating"]]
+    except:
+        restaurants = {}
     return restaurants
 
 def getAddresses(term, location):
     addresses = {}
-    businesses = search(term, location)["businesses"]
-    for places in businesses:
-        fulladdress = str(places["location"]["display_address"][0]) + " "+ str(places["location"]["display_address"][2])
-        addresses[str(places["name"])] = fulladdress
+    try:
+        businesses = search(term, location)["businesses"]
+        for places in businesses:
+            if (len(places["location"]["display_address"]) > 1):
+                fulladdress = str(places["location"]["display_address"][0]) + " "
+                if (len(places["location"]["display_address"])== 3):
+                    fulladdress += str(places["location"]["display_address"][2])
+                else:
+                    fulladdress += str(places["location"]["display_address"][1])
+                addresses[str(places["name"])] = fulladdress
+    except:
+        addresses = {}
     return addresses
 
 
