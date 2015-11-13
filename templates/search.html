@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <h1> Hey Vivian, format this when you get the chance to please :) </h1>
+</head>
+
+<body>
+  {% if restaurants %}
+  <ul>
+    {% for place in restaurants %}
+    <li> {{place}} </li>
+      <ul>
+	<li> Address: {{restaurants[place][0]}} </li>
+	<li> Rating: {{restaurants[place][1]}} </li>
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</body>
+
+</html>
