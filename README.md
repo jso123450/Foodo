@@ -7,7 +7,7 @@
  - Backend/API: Ho Yin Ho
 
 # General Description
- - Search for food from your favorite restaurants on Yelp and make it yourself with a recipe from BigOven! :)
+ - Search for your favorite foods/restaurants and find out how to get to it! :)
 
 # Changelog
  - November 9
