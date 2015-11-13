@@ -12,6 +12,12 @@
 # Changelog
  - November 9
    - Started basic flask, added a reference point in johnny's branch for Yelp API
+ - November 11
+   - Added Yelp API functionality in yelp.py (getRestaurants, getAddresses)
+   - Added homepage styling
+ - November 12
+   - Factored out a loop block of code from yelp.py functions
+   - Incorporated yelp.py usage into webpages (app.py & Jinja template)
 
 
 # How to Run
