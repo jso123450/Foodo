@@ -16,12 +16,15 @@
   </head>
 
   <body>
+    {% block body %}
     <div class="jumbotron">
-
+      
+      <!--title logo-->
       <div class="type">
 	<h1 align="center">foodo</h1>
       </div>
-
+      
+      <!--search bar-->
       <div class="container">
 	<div class="row">
           <div class="col-sm-6 col-sm-offset-3">
@@ -39,7 +42,7 @@
 	</div>
       </div>
     </div>
-
+    {% endblock %}
   </body>
 
 </html>
