@@ -1,13 +1,8 @@
 import urllib2
 import json
 
-<<<<<<< HEAD
-dKey="AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
-mKey="AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
-=======
 dKey = "AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
 mKey = "AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
->>>>>>> master
 
 def routes(start,end,mode):
     origin = start
