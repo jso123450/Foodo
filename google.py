@@ -34,6 +34,5 @@ def map(start,end,mode):
     url="https://www.google.com/maps/embed/v1/directions?key=%s&origin=%s&destination=%s&mode=%s" %(mKey, origin, destination, mode)
     return url
 
-#print map("1301+Dahill+Road,Brooklyn","Stuyvesant+High+School,New+York","driving")
 print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
     
