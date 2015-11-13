@@ -1,8 +1,8 @@
 import urllib2
 import json
 
-dKey="AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
-mKey="AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
+dKey = "AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
+mKey = "AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
 
 def routes(start,end,mode):
     origin = start
@@ -24,7 +24,7 @@ def routeInstructions(start,end,mode,routeNum):
         result=result+step['html_instructions'].encode('utf8')+"<br>"
     return result
 
-print routeInstructions("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving",2)
+# print routeInstructions("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving",2)
 #note when returning this route
 # long dash isn't properly returned. 
 # returns questions marks. 
@@ -40,5 +40,5 @@ def map(start,end,mode):
     url = baseurl % (mKey, origin, destination, mode)
     return url
 
-print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
+# print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
     
