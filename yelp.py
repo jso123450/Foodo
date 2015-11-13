@@ -53,7 +53,7 @@ def getRestaurants(term, location):
         businesses = search(term, location)["businesses"]
         for place in businesses:
             fulladdress = getFullAddress(place)
-            restaurants[str(places["name"])] = [fulladdress, place["rating"]]
+            restaurants[str(place["name"])] = [fulladdress, place["rating"]]
     except:
         restaurants = {}
     return restaurants
