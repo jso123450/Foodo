@@ -1,24 +1,16 @@
-<!DOCTYPE HTML>
+{% extends "index.html" %}
 
-<html>
-
-<head>
-  <h1> Hey Vivian, format this when you get the chance to please :) </h1>
-</head>
-
-<body>
-  {% if restaurants %}
+{% block body %}
+{% if restaurants %}
+<ul>
+  {% for place in restaurants %}
+  <li> {{place}} </li>
   <ul>
-    {% for place in restaurants %}
-    <li> {{place}} </li>
-      <ul>
-	<li> Address: {{restaurants[place][0]}} </li>
-	<li> Rating: {{restaurants[place][1]}} </li>
-      </ul>
-    </li>
-    {% endfor %}
+    <li> Address: {{restaurants[place][0]}} </li>
+    <li> Rating: {{restaurants[place][1]}} </li>
   </ul>
-  {% endif %}
-</body>
-
-</html>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
