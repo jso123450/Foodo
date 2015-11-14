@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 import yelp, google
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ def search(location="NY",term="restaurants"):
     return render_template("search.html",restaurants=restaurantDic)
 
 @app.route("/directions/<place>/<travelMethod>")
-def directions(place="",travelMethod=sessions['prefMode']):
+def directions(place="",travelMethod=session['prefMode']):
     start = session['userLocation']
     route1 = google.routeInstructions(start,place,travelMethod,0)
     route2 = google.routeInstructions(start,place,travelMethod,1)
