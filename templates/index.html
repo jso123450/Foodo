@@ -12,6 +12,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
   </head>
 
@@ -28,34 +29,46 @@
       <div class="container">
 	<div class="row">
           <div class="col-sm-6 col-sm-offset-3">
-            <div id="imaginary_container"> 
-	      <div class="input-group stylish-input-group">
-		<form method="POST">
-		<input name="food" type="text" class="form-control"  placeholder="I'm craving..." >
-		<input name="userLocation" type="text" class="form-control" placeolder="Your Location">
-		<input name="transMethod" type="radio" value="transit">
-		Public Transport<br>
-		<input name="transMethod" type="radio" value="driving">
-		Driving <br>
-		<input name="transMethod" type="radio" value="walking">
-		Walking <br>
-		<input name="transMethod" type="radio" value="bicycling">
-		Biking <br>
-		<input name="button" type="submit" value="Set Location and Transit Method">
-		<input name="button" type="submit" value="Search">
-		</form>
-		<span class="input-group-addon">
-                  <button type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                  </button>  
-		</span>
+	    <form method="POST">
+	      <div id="down10">
+		<input name="userLocation" type="text" class="form-control" placeholder="Your Location">
 	      </div>
-            </div>
-          </div>
-	</div>
+	      <div class="type2" id="down3">
+		<div id="container">
+		  <div>
+		    <input name="transMethod" type="radio" value="transit">
+		    Public Transport
+		  </div>
+		  <div>
+		    <input name="transMethod" type="radio" value="driving">
+		    Driving 
+		  </div>
+		  <div>
+		    <input name="transMethod" type="radio" value="walking">
+		    Walking 
+		  </div>
+		  <div >
+		    <input name="transMethod" type="radio" value="bicycling">
+		    Biking
+		  </div>
+		</div>
+	      </div>
+	      <div id="down3" align="center">
+		<input class="btn" name="button" type="submit" value="Set Location and Transit Method">
+	      </div>
+	      <div id="down7">
+		<input name="food" type="text" class="form-control"  placeholder="I'm craving..." >
+	      </div>
+	      <div id="down7" align="center">
+		<input class="btn btn-success btn-lg" name="button" type="submit" value="Search">
+	      </div>
+	    </form>
+	  </div>
+        </div>
       </div>
     </div>
-    {% endblock %}
-  </body>
+</div>
+{% endblock %}
+</body>
 
 </html>

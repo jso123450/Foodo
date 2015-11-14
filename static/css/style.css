@@ -10,28 +10,43 @@
 }
 
 /* search bar styling */
-#imaginary_container{
-    margin-top:10%; /* Don't copy this*/ 
+#down10{
+    margin-top:10%;
 }
-
-.stylish-input-group .input-group-addon{
-    background: white !important; 
+#down3{
+    margin-top:3%;
 }
-
-.stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
-	border-color:#ccc;
-}
-.stylish-input-group button{
-    border:0;
-    background:transparent;
+#down7{
+    margin-top:7%;
 }
 
 /* main heading styling */
 .type{
-    margin-top: 10%;
+    margin-top: 7%;
     color: rgb(255,255,255);
     font-family: 'Lobster', cursive;
     font-size: 300%;
+}
+
+/* search bars and other options styling */
+.type2{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: rgb(255,255,255);
+    font-size: 150%;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* just some presentational styles: */
+
+#container div:first-child {
+    border-left: 0;
+}
+
+#container div:last-child {
+    border-right: 0;
 }
