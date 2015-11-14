@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import yelp
+import yelp, google
 
 app = Flask(__name__)
 
@@ -17,9 +17,15 @@ def search(location="NY",term="restaurants"):
     restaurantDic = yelp.getRestaurants(term,location)
     return render_template("search.html",restaurants=restaurantDic)
 
-@app.route("/location/<place>")
-def location(place=""):
-    return "hello"
+@app.route("/directions/<place>/<travelMethod>")
+def directions(place="",travelMethod=sessions['prefMode']):
+    start = session['userLocation']
+    route1 = google.routeInstructions(start,place,travelMethod,0)
+    route2 = google.routeInstructions(start,place,travelMethod,1)
+    route3 = google.routeInstructions(start,place,travelMethod,2)
+    map  = google.map(start,place,travelMethod)
+    return render_template("directions.html",route1=route1,route2=route2, 
+                           route3=route3,mapSrc = map)
 
 if __name__ == "__main__":
     app.debug = True
