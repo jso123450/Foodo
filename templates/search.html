@@ -9,14 +9,14 @@
 
     {% for place in restaurants %}
     <form method="POST">
-      <div style="font-size:150%">
-	<input name="button" type="submit" value="{{place}}" class="btn-invis">
-	<input name="placeName" type="hidden" value="{{place}}" class="btn-invis">
-      </div>
-      <input name="placeLocation" type="hidden" value="{{restaurants[place][0]}}">{{restaurants[place][0]}}
-      <br>
-      Rating: {{restaurants[place][1]}}
-      <br><hr>
+    <div style="font-size:150%">
+      <input name="button" type="submit" value="{{place}}" class="btn-invis">
+      <input name="placeName" type="hidden" value="{{place}}" class="btn-invis">
+    </div>
+    <input name="placeLocation" type="hidden" value="{{restaurants[place][0]}}">{{restaurants[place][0]}}
+    <br>
+    Rating: {{restaurants[place][1]}}
+    <br><hr>
     </form>
     {% endfor %}
   </div>
