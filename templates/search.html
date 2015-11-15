@@ -9,9 +9,10 @@
 
     {% for place in restaurants %}
     <div style="font-size:150%">
-      <a href="#">{{place}}</a>
+      <input name="button" type="submit" value="{{place}}" class="btn-invis">
+      <input name="placeName" type="hidden" value="{{place}}" class="btn-invis">
     </div>
-    {{restaurants[place][0]}}
+    <input name="placeLocation" type="hidden" value="{{restaurants[place][0]}}">{{restaurants[place][0]}}</>
     <br>
     Rating: {{restaurants[place][1]}}
     <br><hr>
