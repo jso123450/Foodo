@@ -1,4 +1,4 @@
-/* background styling */
+/* index background styling */
 .jumbotron {
     position: fixed;
     background: linear-gradient( rgba(0,0,0,0.8), rgba(0,0,0,0.8) ), #000 url("../foodpic.jpg") center center;
@@ -9,7 +9,24 @@
     overflow: hidden;
 }
 
-/* search bar styling */
+#bg-center{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background: rgb(120,181,191);
+}
+
+#bg-right {
+  background-color: rgb(0,0,0);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  z-index: -1;
+}
+
 #down10{
     margin-top:10%;
 }
@@ -40,9 +57,6 @@
     justify-content: space-between;
 }
 
-
-/* just some presentational styles: */
-
 #container div:first-child {
     border-left: 0;
 }
@@ -50,3 +64,8 @@
 #container div:last-child {
     border-right: 0;
 }
+
+hr { 
+    margin-left: 30%;
+    margin-right: 30%;
+} 
