@@ -69,3 +69,8 @@ hr {
     margin-left: 30%;
     margin-right: 30%;
 } 
+
+.btn-invis{
+    background: transparent;
+    border: none !important;
+}​
