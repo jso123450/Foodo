@@ -1,16 +1,22 @@
 {% extends "index.html" %}
 
 {% block body %}
-{% if restaurants %}
-<ul>
-  {% for place in restaurants %}
-  <li> {{place}} </li>
-  <ul>
-    <li> Address: {{restaurants[place][0]}} </li>
-    <li> Rating: {{restaurants[place][1]}} </li>
-  </ul>
-</li>
-{% endfor %}
-</ul>
+<div id="bg-right"></div>
+<div id="bg-center">
+  <div class="type2" align="center">
+    <br>
+    {% if restaurants %}
+
+    {% for place in restaurants %}
+    <div style="font-size:150%">
+      {{place}}
+    </div>
+    {{restaurants[place][0]}}
+    <br>
+    Rating: {{restaurants[place][1]}}
+    <br><hr>
+    {% endfor %}
+  </div>
+</div>
 {% endif %}
 {% endblock %}
