@@ -40,8 +40,6 @@ def routes(start,end,mode):
     routes=r['routes']
     return routes
 
-print routes("New+York","Stuyvesant+High+School","driving")
-
 def routeInstructions(start,end,mode,routeNum):
     """ Returns the instructions in a route.
 
