@@ -5,6 +5,17 @@ dKey = "AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
 mKey = "AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
 
 def routes(start,end,mode):
+    """ Retrieves routes from the Google Maps Directions API.
+
+    Args:
+        start: Starting location.
+        end: Destination.
+        mode: method of transit
+
+    Returns:
+        
+
+    """
     origin = start
     destination = end
     mode = mode
@@ -17,10 +28,23 @@ def routes(start,end,mode):
     return r['routes']
 
 def spaceRemover(url):
+    """ Removes spaces in a string.
+
+    Args:
+
+    Returns:
+
+    """
     return url.replace(" ","+")
 
-#three routes to choose
 def routeInstructions(start,end,mode,routeNum):
+    """ Returns the instructions in a route.
+
+    Args:
+
+    Return:
+
+    """
     result=""
     allRoutes = routes(start,end,mode)
     routeSteps = allRoutes[routeNum]['legs'][0]['steps']
@@ -34,8 +58,15 @@ def routeInstructions(start,end,mode,routeNum):
 # something to do with the encoding
 
 
-#use as source of iframe for use on website
 def mapDirections(start,end,mode):
+    """ Returns a map from Google Maps Embed API.
+
+    Args:
+
+    Returns:
+
+
+    """
     origin = start
     destination = end
     mode = mode
@@ -43,5 +74,3 @@ def mapDirections(start,end,mode):
     url = baseurl % (mKey, origin, destination, mode)
     return spaceRemover(url)
 
-#print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
-    
