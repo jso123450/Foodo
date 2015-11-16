@@ -1,6 +1,10 @@
 import urllib2
 import json
 
+"""
+    dKey is API for Google Maps Directions API
+    mKey is API for Google Maps Embed API
+"""
 dKey = "AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
 mKey = "AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
 
@@ -59,12 +63,6 @@ def routeInstructions(start,end,mode,routeNum):
     for step in routeSteps:
         result=result+step['html_instructions'].encode('utf8')+"<br>"
     return result
-
-#note when returning this route
-# long dash isn't properly returned. 
-# returns questions marks. 
-# something to do with the encoding
-
 
 def mapDirections(start,end,mode):
     """ Returns a map from Google Maps Embed API.
