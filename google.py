@@ -35,13 +35,13 @@ def routeInstructions(start,end,mode,routeNum):
 
 
 #use as source of iframe for use on website
-def map(start,end,mode):
+def mapDirections(start,end,mode):
     origin = start
     destination = end
     mode = mode
     baseurl = "https://www.google.com/maps/embed/v1/directions?key=%s&origin=%s&destination=%s&mode=%s"
     url = baseurl % (mKey, origin, destination, mode)
-    return url
+    return spaceRemover(url)
 
 #print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
     

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, request, url_for, redirect
-from BeautifulSoup import BeautifulSoup
+import markup
 import yelp, google
 
 app = Flask(__name__)
@@ -45,7 +45,7 @@ def directions():
     route1 = google.routeInstructions(start,place,travelMethod,0)
     route2 = google.routeInstructions(start,place,travelMethod,1)
     route3 = google.routeInstructions(start,place,travelMethod,2)
-    theMap  = google.map(start,place,travelMethod)
+    theMap  = google.mapDirections(start,place,travelMethod)
     return render_template("directions.html",route1=route1,route2=route2, 
                            route3=route3,mapSrc = theMap)
 
