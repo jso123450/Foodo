@@ -86,6 +86,6 @@ def mapDirections(start,end,mode):
     mode = mode
     baseurl = "https://www.google.com/maps/embed/v1/directions?key=%s&origin=%s&destination=%s&mode=%s"
     url = baseurl % (mKey, origin, destination, mode)
-    url = spaceremover(url)
+    url = spaceRemover(url)
     return url
 
