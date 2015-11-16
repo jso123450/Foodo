@@ -28,6 +28,9 @@
    - Finished up commenting
    - Finished up HTML styling
 
+# ToDo List
+ - Address (Location) validation (if possible; using Google Geocoding API to do this may be against ToS ?)
+
 # How to Run
-1) Clone the repository
-2) Run app.py!
+  1) Clone the repository
+  2) Run app.py!
