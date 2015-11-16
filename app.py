@@ -36,8 +36,9 @@ def search(location="NY",term="restaurants"):
     restaurantDic = yelp.getRestaurants(term,location)
     return render_template("search.html",restaurants=restaurantDic)
 
-@app.route("/directions")
+@app.route("/directions",methods=['GET','POST'])
 def directions():
+    session['restaurantAddress'] = request.form['placeLocation']
     start = session['userLocation']
     travelMethod = session['modeTrans']
     place = session['restaurantAddress']
@@ -47,11 +48,6 @@ def directions():
     theMap  = google.mapDirections(start,place,travelMethod)
     return render_template("directions.html",route1=route1,route2=route2, 
                            route3=route3,mapSrc = theMap)
-
-@app.route("/redirectpage",methods=["GET","POST"])
-def redirectpage():
-    session['restaurantAddress'] = request.form['placeLocation']
-    return redirect(url_for("directions"))
 
 if __name__ == "__main__":
     app.debug = True
