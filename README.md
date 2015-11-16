@@ -18,6 +18,16 @@
  - November 12
    - Factored out a loop block of code from yelp.py functions
    - Incorporated yelp.py usage into webpages (app.py & Jinja template)
-
+ - November 13
+   - Wrote the python functions needed to interact with the Google Map APIs (Google Map Embed and Directions)
+ - November 14
+   - Connected the index page to the search page
+   - Directions route added
+ - November 15
+   - Connected the search page to the directions page
+   - Finished up commenting
+   - Finished up HTML styling
 
 # How to Run
+1) Clone the repository
+2) Run app.py!
