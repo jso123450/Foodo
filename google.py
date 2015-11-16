@@ -10,10 +10,14 @@ def routes(start,end,mode):
     mode = mode
     baseurl = "https://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&mode=%s&alternatives=true&key=%s"
     url = baseurl % (origin, destination, mode, dKey)
+    url = spaceRemover(url)
     request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
     return r['routes']
+
+def spaceRemover(url):
+    return url.replace(" ","+")
 
 #three routes to choose
 def routeInstructions(start,end,mode,routeNum):
@@ -24,7 +28,6 @@ def routeInstructions(start,end,mode,routeNum):
         result=result+step['html_instructions'].encode('utf8')+"<br>"
     return result
 
-# print routeInstructions("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving",2)
 #note when returning this route
 # long dash isn't properly returned. 
 # returns questions marks. 
@@ -40,5 +43,5 @@ def map(start,end,mode):
     url = baseurl % (mKey, origin, destination, mode)
     return url
 
-# print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
+#print map("Brooklyn+Bridge","Prospect+Park,Brooklyn","driving")
     

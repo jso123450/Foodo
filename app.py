@@ -1,4 +1,5 @@
 from flask import Flask, render_template, session, request, url_for, redirect
+from BeautifulSoup import BeautifulSoup
 import yelp, google
 
 app = Flask(__name__)
@@ -36,21 +37,22 @@ def search(location="NY",term="restaurants"):
     restaurantDic = yelp.getRestaurants(term,location)
     return render_template("search.html",restaurants=restaurantDic)
 
-@app.route("/directions/<place>/")
-@app.route("/directions/<place>")
-def directions(place=""):
+@app.route("/directions")
+def directions():
     start = session['userLocation']
     travelMethod = session['modeTrans']
+    place = session['restaurantAddress']
     route1 = google.routeInstructions(start,place,travelMethod,0)
     route2 = google.routeInstructions(start,place,travelMethod,1)
     route3 = google.routeInstructions(start,place,travelMethod,2)
-    map  = google.map(start,place,travelMethod)
+    theMap  = google.map(start,place,travelMethod)
     return render_template("directions.html",route1=route1,route2=route2, 
-                           route3=route3,mapSrc = map)
+                           route3=route3,mapSrc = theMap)
 
-@app.route("/redirect",methods=["GET"]):
-    if (request.method == "GET"):
-        return redirect(url_for("/directions/"+request.form.get("button")))
+@app.route("/redirectpage",methods=["GET","POST"])
+def redirectpage():
+    session['restaurantAddress'] = request.form['placeLocation']
+    return redirect(url_for("directions"))
 
 if __name__ == "__main__":
     app.debug = True
