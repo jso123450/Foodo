@@ -37,7 +37,7 @@ def search(location="NY",term="restaurants"):
     return render_template("search.html",restaurants=restaurantDic)
 
 @app.route("/directions/<place>/")
-@app.route("/direcitons/<place>")
+@app.route("/directions/<place>")
 def directions(place=""):
     start = session['userLocation']
     travelMethod = session['modeTrans']
