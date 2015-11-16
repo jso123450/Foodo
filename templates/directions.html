@@ -1,11 +1,7 @@
-<!DOCTYPE HTML>
+{% extends "index.html" %}
 
-<html>
-
-<head>
-</head>
-
-<body>
+{% block body %}
+<center>
   <h1> Route 1 </h1>
   <p> {{route1|safe}} </p>
   <h1> Route 2 </h1>
@@ -13,6 +9,5 @@
   <h1> Route 3 </h1>
   <p> {{route3|safe}} </p>
   <iframe src={{mapSrc}}></iframe>
-</body>
-
-</html>
+</center>
+{% endblock %}
