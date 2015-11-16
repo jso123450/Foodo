@@ -28,13 +28,16 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/search")
-@app.route("/search/")
-@app.route("/search/<location>/")
-@app.route("/search/<location>/<term>")
+@app.route("/search",methods=['GET','POST'])
+@app.route("/search/",methods=['GET','POST'])
+@app.route("/search/<location>/",methods=['GET','POST'])
+@app.route("/search/<location>/<term>",methods=['GET','POST'])
 def search(location="NY",term="restaurants"):
-    restaurantDic = yelp.getRestaurants(term,location)
-    return render_template("search.html",restaurants=restaurantDic)
+    if request.method=='GET':
+        restaurantDic = yelp.getRestaurants(term,location)
+        return render_template("search.html",restaurants=restaurantDic)
+    else:
+        return redirect(url_for(directions(request.form['placeName'])))
 
 @app.route("/directions/<place>/")
 @app.route("/directions/<place>")
