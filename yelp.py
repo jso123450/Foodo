@@ -10,9 +10,7 @@ TOKEN = "ucuSoWsDWPZFGzJzOR13g5GT53tUTR9g"
 TOKEN_SECRET = "k399NqU0z3aelLkdhvM-8BEHyXQ"
 
 def setRadius(limit):
-    """ Sets RADIUS to limit.
-    
-    Limits the radius around the specified location that Yelp will search.
+    """ Limits the radius around the specified location that Yelp will search.
 
     Args:
         limit: (Integer) The distance one wants to search for a business.
@@ -23,9 +21,7 @@ def setRadius(limit):
     RADIUS = limit
 
 def request(url_params):
-    """
-    
-    Retrieves data from the yelp api given search parameters
+    """ Retrieves data from the yelp api given search parameters
     
     Args:
         url_params: (String) the part of a url that contains the what the user          wants to search
@@ -52,9 +48,7 @@ def request(url_params):
     return response
 
 def search(term, location):
-    """
-
-    Combines user inputs to create a url query
+    """ Combines user inputs to create a url query
 
     Args:
         term: (String) Something to search for (e.g. restaurants, tacos)
@@ -73,9 +67,7 @@ def search(term, location):
     return url
 
 def getFullAddress(place):
-    """
-
-    Finds the full address of a restaurant given data from the yelp api
+    """ Finds the full address of a restaurant given data from the yelp api
 
     Args:
         place: (Dictionary) contains information about a restaurant
@@ -95,9 +87,8 @@ def getFullAddress(place):
     return fulladdress
 
 def getRestaurants(term, location):
-    """
-    
-    Finds restaurants nearby the location specified with the specified food type    and returns the addresses and ratings
+    """ Finds restaurants nearby the location specified with the specified food
+    type and returns the addresses and ratings
 
     Args:
        term: (String) The type of food desired
@@ -118,9 +109,8 @@ def getRestaurants(term, location):
     return restaurants
 
 def getAddresses(term, location):
-    """
-
-    Finds restaurants nearby the location given by the user that matches the        type of food given
+    """ Finds restaurants nearby the location given by the user that matches
+    the type of food given
 
     Args:
         term: The type of food desired
