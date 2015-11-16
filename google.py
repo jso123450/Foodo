@@ -4,16 +4,28 @@ import json
 dKey = "AIzaSyCeavvXLPxaal8kb7SFnzYpShJ37vNCjQg"
 mKey = "AIzaSyBSVLrtt6Hb6MDqyXdAHunxuYp0njyh2Dg"
 
+def spaceRemover(url):
+    """ Removes spaces in a string.
+
+    Args:
+        url: (string) string with spaces
+    Returns:
+        result: (string) url with spaces replaced with +
+    """
+    result=url.replace(" ","+")
+    return result
+
 def routes(start,end,mode):
     """ Retrieves routes from the Google Maps Directions API.
 
     Args:
-        start: Starting location.
-        end: Destination.
-        mode: method of transit
+        start: (string)Starting location.
+        end: (string) Destination.
+        mode: (string) method of transit
 
     Returns:
-        
+        routes: (array) An array of the routes. Each route is a array with
+        steps of the directions inside.
 
     """
     origin = start
@@ -25,24 +37,22 @@ def routes(start,end,mode):
     request = urllib2.urlopen(url)
     result = request.read()
     r = json.loads(result)
-    return r['routes']
+    routes=r['routes']
+    return routes
 
-def spaceRemover(url):
-    """ Removes spaces in a string.
-
-    Args:
-
-    Returns:
-
-    """
-    return url.replace(" ","+")
+print routes("New+York","Stuyvesant+High+School","driving")
 
 def routeInstructions(start,end,mode,routeNum):
     """ Returns the instructions in a route.
 
     Args:
-
+        start: (string)Starting location.
+        end: (string) Destination.
+        mode: (string) method of transit
+        routeNum: (int) route number
     Return:
+        result: (string) html with all the steps for that route. 
+        Each step on seperate line.
 
     """
     result=""
@@ -61,10 +71,14 @@ def routeInstructions(start,end,mode,routeNum):
 def mapDirections(start,end,mode):
     """ Returns a map from Google Maps Embed API.
 
-    Args:
+    Args: 
+        start: (string)Starting location.
+        end: (string) Destination.
+        mode: (string) method of transit
 
     Returns:
-
+        url: (string) url of the embedded map that will be used as source
+        of a iFrame in html
 
     """
     origin = start
@@ -72,5 +86,6 @@ def mapDirections(start,end,mode):
     mode = mode
     baseurl = "https://www.google.com/maps/embed/v1/directions?key=%s&origin=%s&destination=%s&mode=%s"
     url = baseurl % (mKey, origin, destination, mode)
-    return spaceRemover(url)
+    url = spaceremover(url)
+    return url
 
