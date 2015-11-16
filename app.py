@@ -49,8 +49,15 @@ def directions():
     travelMethod = session['modeTrans']
     place = session['restaurantAddress']
     route1 = google.routeInstructions(start,place,travelMethod,0)
-    route2 = google.routeInstructions(start,place,travelMethod,1)
-    route3 = google.routeInstructions(start,place,travelMethod,2)
+    try:
+        route2 = google.routeInstructions(start,place,travelMethod,1)
+    except:
+        route2="No alternative"
+    try:
+        route3 = google.routeInstructions(start,place,travelMethod,1)
+    except:
+        route3 ="No alternative"
+        
     theMap  = google.mapDirections(start,place,travelMethod)
     return render_template("directions.html",route1=route1,route2=route2, 
                            route3=route3,mapSrc = theMap)
