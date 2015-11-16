@@ -24,12 +24,14 @@ def setRadius(limit):
 
 def request(url_params):
     """
-
-    Args:
-
-
-    Returns:
     
+    Retrieves data from the yelp api given search parameters
+    
+    Args:
+        url_params: (String) the part of a url that contains the what the user          wants to search
+
+    Returns: 
+        response: (Dictionary) contains all the information from yelp api   
     """
 
     url = "https://api.yelp.com/v2/search/"
@@ -52,12 +54,14 @@ def request(url_params):
 def search(term, location):
     """
 
+    Combines user inputs to create a url query
+
     Args:
         term: (String) Something to search for (e.g. restaurants, tacos)
         location: (String) In what location to search for.
     
     Returns:
-
+        url: (String) Part of a url query that contains the  search parameters
     """
 
     url_params = {
@@ -65,13 +69,19 @@ def search(term, location):
         'location': location.replace(' ', '+'),
         'radius_filter': RADIUS
     }
-    return request(url_params)
+    url = request(url_params)
+    return url
 
 def getFullAddress(place):
     """
 
+    Finds the full address of a restaurant given data from the yelp api
+
     Args:
-        place: (String) 
+        place: (Dictionary) contains information about a restaurant
+
+    Returns:
+        fulladdress: (String) the full address of the restaurant   
 
     """
 
@@ -86,13 +96,15 @@ def getFullAddress(place):
 
 def getRestaurants(term, location):
     """
+    
+    Finds restaurants nearby the location specified with the specified food type    and returns the addresses and ratings
 
     Args:
-       term: (String)
-       location: (String)
+       term: (String) The type of food desired
+       location: (String) In what location to search for
 
     Returns:
-
+       restaurants: (Dictionary) Name of the restaurants as keys and a list            containing the address and rating as the value
     """
 
     restaurants = {}
@@ -108,12 +120,14 @@ def getRestaurants(term, location):
 def getAddresses(term, location):
     """
 
+    Finds restaurants nearby the location given by the user that matches the        type of food given
+
     Args:
-        term:
-        location:
+        term: The type of food desired
+        location: The location to search for
 
     Returns:
-
+        addresses: (Dictionary) A dictionary containing names of the restaurants        as keys and the addresses as values
     """
     addresses = {}
     try:
