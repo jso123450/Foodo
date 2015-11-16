@@ -6,9 +6,13 @@
 </head>
 
 <body>
-  <p> {{route1}} </p>
-  <p> {{route2}} </p>
-  <p> {{route3}} </p>
+  <h1> Route 1 </h1>
+  <p> {{route1|safe}} </p>
+  <h1> Route 2 </h1>
+  <p> {{route2|safe}} </p>
+  <h1> Route 3 </h1>
+  <p> {{route3|safe}} </p>
+  <iframe src={{mapSrc}}></iframe>
 </body>
 
 </html>

@@ -43,6 +43,7 @@ def request(url_params):
     token = oauth2.Token(TOKEN,TOKEN_SECRET)
     oauth_request.sign_request(oauth2.SignatureMethod_HMAC_SHA1(), consumer, token)
     signed_url = oauth_request.to_url()
+    print(signed_url)
     conn = urllib2.urlopen(signed_url, None)
     response = json.loads(conn.read())
     conn.close()
