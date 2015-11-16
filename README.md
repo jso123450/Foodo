@@ -26,10 +26,10 @@
  - November 15
    - Connected the search page to the directions page
    - Finished up commenting
-   - Finished up HTML styling
 
 # ToDo List
  - Address (Location) validation (if possible; using Google Geocoding API to do this may be against ToS ?)
+ - Fancier CSS!
 
 # How to Run
 <ol>
