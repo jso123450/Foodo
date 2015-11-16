@@ -48,6 +48,10 @@ def directions(place=""):
     return render_template("directions.html",route1=route1,route2=route2, 
                            route3=route3,mapSrc = map)
 
+@app.route("/redirect",methods=["GET"]):
+    if (request.method == "GET"):
+        return redirect(url_for("/directions/"+request.form.get("button")))
+
 if __name__ == "__main__":
     app.debug = True
     app.secret_key="hoyinhoooo"
