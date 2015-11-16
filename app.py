@@ -18,8 +18,14 @@ def index():
             session['userLocation'] = userLocation
             return render_template("index.html")
         elif button == "Search":
-            food = request.form['food']
             if session.has_key('userLocation'):
+                if session['userLocation']=="":
+                    error="No location given"
+                    return render_template("index.html",error=error)
+                food = request.form['food']
+                if food=="":
+                    error="You're not craving anything."
+                    return render_template("index.html",error=error)
                 location = session['userLocation']
                 return redirect ('/search/%s/%s' %(location,food))
             else:
