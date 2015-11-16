@@ -8,7 +8,7 @@
     {% if restaurants %}
 
     {% for place in restaurants %}
-    <form method="POST" action="../../redirectpage">
+    <form method="POST" action="../../directions">
     <div style="font-size:150%">
       <input name="button" type="submit" value="{{place}}" class="btn-invis">
       <input name="placeName" type="hidden" value="{{place}}" class="btn-invis">

@@ -18,8 +18,14 @@ def index():
             session['userLocation'] = userLocation
             return render_template("index.html")
         elif button == "Search":
-            food = request.form['food']
             if session.has_key('userLocation'):
+                if session['userLocation']=="":
+                    error="No location given"
+                    return render_template("index.html",error=error)
+                food = request.form['food']
+                if food=="":
+                    error="You're not craving anything."
+                    return render_template("index.html",error=error)
                 location = session['userLocation']
                 return redirect ('/search/%s/%s' %(location,food))
             else:
@@ -39,22 +45,25 @@ def search(location="NY",term="restaurants"):
     else:
         return redirect(url_for(directions(request.form['placeName'])))
 
-@app.route("/directions")
+@app.route("/directions",methods=['GET','POST'])
 def directions():
+    session['restaurantAddress'] = request.form['placeLocation']
     start = session['userLocation']
     travelMethod = session['modeTrans']
     place = session['restaurantAddress']
     route1 = google.routeInstructions(start,place,travelMethod,0)
-    route2 = google.routeInstructions(start,place,travelMethod,1)
-    route3 = google.routeInstructions(start,place,travelMethod,2)
+    try:
+        route2 = google.routeInstructions(start,place,travelMethod,1)
+    except:
+        route2="No alternative"
+    try:
+        route3 = google.routeInstructions(start,place,travelMethod,1)
+    except:
+        route3 ="No alternative"
+        
     theMap  = google.mapDirections(start,place,travelMethod)
     return render_template("directions.html",route1=route1,route2=route2, 
                            route3=route3,mapSrc = theMap)
-
-@app.route("/redirectpage",methods=["GET","POST"])
-def redirectpage():
-    session['restaurantAddress'] = request.form['placeLocation']
-    return redirect(url_for("directions"))
 
 if __name__ == "__main__":
     app.debug = True

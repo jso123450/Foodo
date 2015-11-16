@@ -35,7 +35,7 @@
 	      <div class="type2" id="down3">
 		<div id="container">
 		  <div>
-		    <input name="transMethod" type="radio" value="transit">
+		    <input name="transMethod" type="radio" value="transit" checked="checked">
 		    Public Transport
 		  </div>
 		  <div>
@@ -61,6 +61,9 @@
 	      <div id="down7" align="center">
 		<input class="btn btn-success btn-lg" name="button" type="submit" value="Search">
 	      </div>
+	      {% if error %}
+	      <br><h7 style="color:red"><center>{{error}}</h7>
+	      {% endif %}
 	    </form>
 	  </div>
         </div>
