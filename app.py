@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, request, url_for, redirect
-import markup
+import Markup
 import yelp, google
 
 app = Flask(__name__)
