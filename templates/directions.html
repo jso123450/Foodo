@@ -3,11 +3,15 @@
 {% block body %}
 <center>
   <h1> Route 1 </h1>
-  <p> {{route1|safe}} </p>
+    <p> {{route1|safe}} </p>
+  {% if route2 != route1 %}
   <h1> Route 2 </h1>
-  <p> {{route2|safe}} </p>
+    <p> {{route2|safe}} </p>
+  {% endif %}
+  {% if route3 != route2 and route3 != route1 %}
   <h1> Route 3 </h1>
-  <p> {{route3|safe}} </p>
+    <p> {{route3|safe}} </p>
+  {% endif %}
   <iframe src={{mapSrc}}></iframe>
 </center>
 {% endblock %}
