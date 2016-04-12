@@ -3,6 +3,7 @@ import yelp, google
 
 app = Flask(__name__)
 
+# index
 @app.route("/",methods=['GET','POST'])
 @app.route("/index",methods=['GET','POST'])
 @app.route("/home",methods=['GET','POST'])
@@ -37,6 +38,7 @@ def index():
                 return render_template("index.html",error=error)
     return render_template("index.html")
 
+# search results
 @app.route("/search",methods=['GET','POST'])
 @app.route("/search/",methods=['GET','POST'])
 @app.route("/search/<location>/",methods=['GET','POST'])
@@ -46,6 +48,7 @@ def search(location="New York",term="restaurants"):
     restaurantDic = yelp.getRestaurants(term,location)
     return render_template("search.html",restaurants=restaurantDic)
 
+# direction results
 @app.route("/directions",methods=['GET','POST'])
 def directions():
     session['restaurantAddress'] = request.form['placeLocation']
@@ -61,10 +64,10 @@ def directions():
     try:
         route3 = google.routeInstructions(start,place,travelMethod,1)
     except:
-        route3 ="No alternative"
+        route3 = "No alternative"
     theMap = google.mapDirections(start,place,travelMethod)
     return render_template("directions.html",route1=route1,route2=route2, 
-                           route3=route3,mapSrc = theMap)
+                           route3=route3,mapSrc=theMap)
 
 if __name__ == "__main__":
     app.debug = True
